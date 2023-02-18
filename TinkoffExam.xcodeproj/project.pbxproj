@@ -19,6 +19,8 @@
 		E422E0DA299E97E100545357 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422E0D9299E97E100545357 /* NewsTableViewCell.swift */; };
 		E422E0DE299E983A00545357 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422E0DD299E983A00545357 /* NewsViewController.swift */; };
 		E422E0E0299E986D00545357 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E422E0DF299E986D00545357 /* APICaller.swift */; };
+		E422E0E2299E9A7000545357 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E422E0E1299E9A7000545357 /* README.md */; };
+		E4DC3A9529A00FBA00614267 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DC3A9429A00FBA00614267 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		E422E0D9299E97E100545357 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E422E0DD299E983A00545357 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		E422E0DF299E986D00545357 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		E422E0E1299E9A7000545357 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		E4DC3A9429A00FBA00614267 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +89,7 @@
 		E422E09D299E978B00545357 = {
 			isa = PBXGroup;
 			children = (
+				E422E0E1299E9A7000545357 /* README.md */,
 				E422E0A8299E978B00545357 /* TinkoffExam */,
 				E422E0BF299E978B00545357 /* TinkoffExamTests */,
 				E422E0C9299E978B00545357 /* TinkoffExamUITests */,
@@ -115,6 +120,7 @@
 				E422E0B2299E978B00545357 /* Assets.xcassets */,
 				E422E0B4299E978B00545357 /* LaunchScreen.storyboard */,
 				E422E0B7299E978B00545357 /* Info.plist */,
+				E4DC3A9429A00FBA00614267 /* WebViewController.swift */,
 			);
 			path = TinkoffExam;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E422E0E2299E9A7000545357 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +278,7 @@
 				E422E0E0299E986D00545357 /* APICaller.swift in Sources */,
 				E422E0AA299E978B00545357 /* AppDelegate.swift in Sources */,
 				E422E0DA299E97E100545357 /* NewsTableViewCell.swift in Sources */,
+				E4DC3A9529A00FBA00614267 /* WebViewController.swift in Sources */,
 				E422E0DE299E983A00545357 /* NewsViewController.swift in Sources */,
 				E422E0AC299E978B00545357 /* SceneDelegate.swift in Sources */,
 			);

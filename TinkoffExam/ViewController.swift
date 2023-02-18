@@ -12,25 +12,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var myTableView = UITableView()
     var myView = NewsViewController()
 
-    var selectedIndexPath: IndexPath = IndexPath()
     let myRefreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         return refreshControl
     }()
     
-//    var cachedDataSource: NSCache<AnyObject, UIImage>
+    private var articles = [Article]()
+    private var viewModels = [NewsTableViewCellViewModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         createTable()
-        
-
     }
     
-    private var articles = [Article]()
-    private var viewModels = [NewsTableViewCellViewModel]()
-    
+    //MARK: - func
     func createTable() {
         self.myTableView = UITableView(frame: view.bounds, style: .plain)
         myTableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
@@ -45,7 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             case .success(let articles):
                 self?.articles = articles
                 self?.viewModels = articles.compactMap({
-                    NewsTableViewCellViewModel(title: $0.title, subtitle: $0.description ?? "", urlToImage: URL(string: $0.urlToImage ?? ""))
+                    NewsTableViewCellViewModel(title: $0.title, subtitle: $0.description ?? "",url: $0.url ?? "", urlToImage: URL(string: $0.urlToImage ?? ""))
                 })
                 
                 DispatchQueue.main.async {
@@ -58,6 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    //MARK: - objc func
     @objc func refresh(sender: UIRefreshControl) {
         sender.endRefreshing()
         APICaller.shared.getTopStories{ [weak self] result in
@@ -65,7 +62,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             case .success(let articles):
                 self?.articles = articles
                 self?.viewModels = articles.compactMap({
-                    NewsTableViewCellViewModel(title: $0.title, subtitle: $0.description ?? "", urlToImage: URL(string: $0.urlToImage ?? ""))
+                    NewsTableViewCellViewModel(title: $0.title, subtitle: $0.description ?? "",url: $0.url ?? "", urlToImage: URL(string: $0.urlToImage ?? ""))
                 })
                 
                 DispatchQueue.main.async {
@@ -93,9 +90,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             fatalError()
         }
         cell.configure(with: viewModels[indexPath.row])
-        
-        
-        
         return cell
     }
 
