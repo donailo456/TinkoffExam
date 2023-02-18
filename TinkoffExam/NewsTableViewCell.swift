@@ -10,12 +10,14 @@ import UIKit
 class NewsTableViewCellViewModel{
     let title: String
     let subtitle: String
+    let url: String?
     let urlToImage: URL?
     var imageData: Data?
     
-    init(title: String, subtitle: String, urlToImage: URL?, imageData: Data? = nil) {
+    init(title: String, subtitle: String, url: String, urlToImage: URL?, imageData: Data? = nil) {
         self.title = title
         self.subtitle = subtitle
+        self.url = url
         self.urlToImage = urlToImage
         self.imageData = imageData
     }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 private var newsTitleLable1: UILabel = {
    let label = UILabel()
@@ -31,9 +32,19 @@ private let newsImageView1: UIImageView = {
     return imageView
 }()
 
+private let newsButton: UIButton = {
+    let button = UIButton()
+    button.backgroundColor = .systemBlue
+    button.setTitle("Дополнительная информация", for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+}()
+
+var urlWK = ""
+
 class NewsViewController: UIViewController {
     
-    var article: Article?
+    var webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +55,11 @@ class NewsViewController: UIViewController {
         
     }
     func createNewsVC(){
-        
-        newsImageView1.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
-        newsImageView1.center = view.center
-        
         view.addSubview(newsTitleLable1)
         view.addSubview(subtitleLabel1)
         view.addSubview(newsImageView1)
+        view.addSubview(newsButton)
+        newsButton.addTarget(self, action: #selector(createWK), for: .touchUpInside)
     }
     func constraint(){
         NSLayoutConstraint.activate([
@@ -66,10 +75,16 @@ class NewsViewController: UIViewController {
             newsImageView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             newsImageView1.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             newsImageView1.heightAnchor.constraint(equalToConstant: 150),
-            newsImageView1.widthAnchor.constraint(equalToConstant: 150)
+            newsImageView1.widthAnchor.constraint(equalToConstant: 150),
             
-            
+            newsButton.topAnchor.constraint(equalTo: newsImageView1.bottomAnchor, constant: 20),
+            newsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            newsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
         ])
+    }
+    @objc func createWK(){
+        present(WebViewController(), animated: true)
+        
     }
     
 }
@@ -78,6 +93,7 @@ func addViewNews(with viewModel: NewsTableViewCellViewModel ){
     
     newsTitleLable1.text = viewModel.title
     subtitleLabel1.text = viewModel.subtitle
+    urlWK = viewModel.url ?? ""
     
     if let data = viewModel.imageData{
         newsImageView1.image = UIImage(data: data)
